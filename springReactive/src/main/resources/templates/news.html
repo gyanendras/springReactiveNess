@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TopNews</title>
+</head>
+<body>
+    <h1>News:</h1>
+    <ul>
+        <li th:each="top2 : ${topNews}" th:text="${top2.getNews()}"></li>
+    </ul>
+</body>
+</html>
