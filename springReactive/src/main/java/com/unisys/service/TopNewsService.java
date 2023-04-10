@@ -22,8 +22,14 @@ public class TopNewsService {
 	    	arList.add(new News("Top"+i));
 	    }
 	    
-		Flux<News> newsFlux = Flux.fromIterable(arList).delayElements(Duration.ofSeconds(2)); 
-		return newsFlux;
+		Flux<News> newsFlux = Flux.fromIterable(arList);//.delayElements(Duration.ofSeconds(2));
+		newsFlux.subscribe(System.out::println);
+		Flux<String> stringFlux = newsFlux.map(e->new String(e.getNews()));
+		stringFlux.subscribe(System.out::println);
+		//map, filter, reduce, collect,
+		Flux<News> filteredNews = newsFlux.filter(e->e.getNews().endsWith("2")).delayElements(Duration.ofSeconds(2));
+		
+		return filteredNews;
 	}
 	
 	
