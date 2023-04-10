@@ -21,6 +21,10 @@ public class TopNewsService {
 	    for(int i=0;i<1000;++i) {
 	    	arList.add(new News("Top"+i));
 	    }
-		return Flux.fromIterable(arList).delayElements(Duration.ofSeconds(2)); 
+	    
+		Flux<News> newsFlux = Flux.fromIterable(arList).delayElements(Duration.ofSeconds(2)); 
+		return newsFlux;
 	}
+	
+	
 }
